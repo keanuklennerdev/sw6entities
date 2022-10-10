@@ -1,4 +1,4 @@
-# Shopware6Tweaks
+# Shopware 6 Tweaks
   
 ### Repositories
 ```php
