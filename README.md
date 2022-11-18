@@ -105,24 +105,26 @@ public static function getSubscribedEvents(): array
 ```
 
 ### vueJS Compiling StoreLocator
-cd	|| ~/gitrepos/projectsSW6/buefa_shop/shop/plugins/NetiNextStoreLocator/src/Resources/app/storefront/src/plugins/store-locator/src/shared/pages/
-cp to	|| ~/gitrepos/projectsSW6/buefa/src/plugins/NetiNextStoreLocator/src/Resources/app/storefront/src/plugins/store-locator/src/shared/pages/
-// Edit JS file in IDE to modify filteredStoresByCountry (Project => Deploy on Local Machine & Server)
-file: index.js
+```bash
+	cd	|| ~/gitrepos/projectsSW6/buefa_shop/shop/plugins/NetiNextStoreLocator/src/Resources/app/storefront/src/plugins/store-locator/src/shared/pages/
+	cp to	|| ~/gitrepos/projectsSW6/buefa/src/plugins/NetiNextStoreLocator/src/Resources/app/storefront/src/plugins/store-locator/src/shared/pages/
+	// Edit JS file in IDE to modify filteredStoresByCountry (Project => Deploy on Local Machine & Server)
+	file: index.js
 
-compile || /var/www/html/custom/plugins/NetiNextStoreLocator/src/Resources/app/storefront/src/plugins/store-locator
-cd	|| ~/gitrepos/projectsSW6/buefa/src/plugins/NetiNextStoreLocator/src/Resources/app/storefront/src/plugins/store-locator/dist
-cp to	|| ~/gitrepos/projectsSW6/buefa_shop/shop/plugins/NetiNextStoreLocator/src/Resources/app/storefront/src/plugins/store-locator/dist
-// VUE Component Minified JS => Compile Files with command (Compile on Local Machine => Deploy file on Server & Project)
-file: store-locator.js
-command: npm run build
+	compile || /var/www/html/custom/plugins/NetiNextStoreLocator/src/Resources/app/storefront/src/plugins/store-locator
+	cd	|| ~/gitrepos/projectsSW6/buefa/src/plugins/NetiNextStoreLocator/src/Resources/app/storefront/src/plugins/store-locator/dist
+	cp to	|| ~/gitrepos/projectsSW6/buefa_shop/shop/plugins/NetiNextStoreLocator/src/Resources/app/storefront/src/plugins/store-locator/dist
+	// VUE Component Minified JS => Compile Files with command (Compile on Local Machine => Deploy file on Server & Project)
+	file: store-locator.js
+	command: npm run build
 
-cd	|| ~/gitrepos/projectsSW6/buefa/src/plugins/NetiNextStoreLocator/src/Resources/app/storefront/dist/storefront/js
-cp to	|| ~/gitrepos/projectsSW6/buefa_shop/shop/plugins/NetiNextStoreLocator/src/Resources/app/storefront/dist/storefront/js
-// StoreLocator Plugin Minified JS => Compile Second (Local Machine => Deploy on Server & Project)
-file: neti-next-store-locator.js
-command: ./bin/build-storefront.sh
+	cd	|| ~/gitrepos/projectsSW6/buefa/src/plugins/NetiNextStoreLocator/src/Resources/app/storefront/dist/storefront/js
+	cp to	|| ~/gitrepos/projectsSW6/buefa_shop/shop/plugins/NetiNextStoreLocator/src/Resources/app/storefront/dist/storefront/js
+	// StoreLocator Plugin Minified JS => Compile Second (Local Machine => Deploy on Server & Project)
+	file: neti-next-store-locator.js
+	command: ./bin/build-storefront.sh
 
-// Compile Theme with new minified JS files from local machine and clear cache (Server)
-command: /opt/plesk/php/7.4/bin/php -d memory_limit=-1 bin/console theme:compile
-command: /opt/plesk/php/7.4/bin/php -d memory_limit=-1 bin/console cache:clear
+	// Compile Theme with new minified JS files from local machine and clear cache (Server)
+	command: /opt/plesk/php/7.4/bin/php -d memory_limit=-1 bin/console theme:compile
+	command: /opt/plesk/php/7.4/bin/php -d memory_limit=-1 bin/console cache:clear
+```
