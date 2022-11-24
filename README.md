@@ -128,3 +128,8 @@ command: ./bin/build-storefront.sh
 command: /opt/plesk/php/7.4/bin/php -d memory_limit=-1 bin/console theme:compile
 command: /opt/plesk/php/7.4/bin/php -d memory_limit=-1 bin/console cache:clear
 ```
+
+### Create user via Shopware 6 CLI
+```bash
+php bin/console user:create --admin --email=john@doe.com --firstName="John" --lastName="Doe" --password=johndoe123 --no-interaction johndoe
+```
