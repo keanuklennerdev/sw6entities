@@ -1,6 +1,45 @@
-# Shopware 6 Tweaks
-  
-### Repositories
+
+# Extended Documentation
+### PHP Location Plesk Server
+```bash
+remote server > /opt/plesk/php/7.4/bin/php
+```
+### User Creation via Shopware CLI
+```bash
+remote server > bin/console user:create --admin --email=first@last.com --firstName="first" --lastName="last" --password=pwd123 --no-interaction firstlast
+```
+### Compile Plugin Storefront and Administration Components
+#### Compile Storefront Javascript
+```bash
+docker machine > bin/console plugin:refresh
+docker machine > bin/console plugin:install PLUGINNAME
+docker machine > bin/console plugin:activate PLUGINNAME
+docker machine > copy changed files to machine
+docker machine > ./bin/build-storefront.sh
+
+docker machine > copy compiled minified JS to server 
+location       > plugindir/src/Resources/app/storefront/dist/storefront/js/full-plugin-name.js
+
+remote server  > bin/console theme:compile
+remote server  > bin/console cache:clear
+```
+
+#### Compile Administration Javascript
+```bash
+docker machine > bin/console plugin:refresh
+docker machine > bin/console plugin:install PLUGINNAME
+docker machine > bin/console plugin:activate PLUGINNAME
+docker machine > copy changed files to machine
+docker machine > ./bin/build-administration.sh
+
+docker machine > copy compiled minified JS to server
+location       > plugindir/src/Resources/public/administration/js/full-plugin-name.js
+
+remote server  > bin/console plugin:update PLUGINNAME
+remote server  > bin/console theme:compile
+remote server  > bin/console cache:clear
+```  
+## How to use EntityRepositories
 ```php
 $criteria = new Criteria();
 $criteria->addFilter(new EqualsAnyFilter('[DATA]', [<DATA_ARRAY>]));
@@ -11,9 +50,8 @@ $criteria->addAssociation('field.attribute');
 $entity = EntityRepositoryInterface $repository->search($criteria, $this->context);
 ```
 
-### Setup Custom Fields
-Initialize Custom Field on Install
-
+## Custom Field in Shopware Plugin
+### Init custom field on plugin install:
 ```php
 public function install(InstallContext $installContext): void
 {
@@ -54,9 +92,7 @@ public function install(InstallContext $installContext): void
 	], $installContext->getContext());
 }
 ```
-
-Delete Custom Field on Uninstall
-
+### Delete custom field on plugin uninstall:
 ```php
 public function uninstall(UninstallContext $uninstallContext): void
 {
@@ -73,8 +109,7 @@ public function uninstall(UninstallContext $uninstallContext): void
 	');
 }
 ```
-
-Fill Custom Field
+### Fill custom field in plugin:
 ```php
 public function setCustomField(string $param): void  
 {  
@@ -93,7 +128,7 @@ public function setCustomField(string $param): void
 }
 ```
 
-### Setup Page Subscription
+## Page EventSubscription
 
 ```php
 public static function getSubscribedEvents(): array  
@@ -104,13 +139,8 @@ public static function getSubscribedEvents(): array
 }
 ```
 
-### vueJS Compiling StoreLocator
+## VueJS Compile Frontend
 ```bash
-cd	|| ~/gitrepos/projectsSW6/buefa_shop/shop/plugins/NetiNextStoreLocator/src/Resources/app/storefront/src/plugins/store-locator/src/shared/pages/
-cp to	|| ~/gitrepos/projectsSW6/buefa/src/plugins/NetiNextStoreLocator/src/Resources/app/storefront/src/plugins/store-locator/src/shared/pages/
-// Edit JS file in IDE to modify filteredStoresByCountry (Project => Deploy on Local Machine & Server)
-file: index.js
-
 compile || /var/www/html/custom/plugins/NetiNextStoreLocator/src/Resources/app/storefront/src/plugins/store-locator
 cd	|| ~/gitrepos/projectsSW6/buefa/src/plugins/NetiNextStoreLocator/src/Resources/app/storefront/src/plugins/store-locator/dist
 cp to	|| ~/gitrepos/projectsSW6/buefa_shop/shop/plugins/NetiNextStoreLocator/src/Resources/app/storefront/src/plugins/store-locator/dist
@@ -118,18 +148,4 @@ cp to	|| ~/gitrepos/projectsSW6/buefa_shop/shop/plugins/NetiNextStoreLocator/src
 file: store-locator.js
 command: npm run build
 
-cd	|| ~/gitrepos/projectsSW6/buefa/src/plugins/NetiNextStoreLocator/src/Resources/app/storefront/dist/storefront/js
-cp to	|| ~/gitrepos/projectsSW6/buefa_shop/shop/plugins/NetiNextStoreLocator/src/Resources/app/storefront/dist/storefront/js
-// StoreLocator Plugin Minified JS => Compile Second (Local Machine => Deploy on Server & Project)
-file: neti-next-store-locator.js
-command: ./bin/build-storefront.sh
-
-// Compile Theme with new minified JS files from local machine and clear cache (Server)
-command: /opt/plesk/php/7.4/bin/php -d memory_limit=-1 bin/console theme:compile
-command: /opt/plesk/php/7.4/bin/php -d memory_limit=-1 bin/console cache:clear
-```
-
-### Create user via Shopware 6 CLI
-```bash
-php bin/console user:create --admin --email=john@doe.com --firstName="John" --lastName="Doe" --password=johndoe123 --no-interaction johndoe
 ```
