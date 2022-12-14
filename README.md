@@ -1,5 +1,4 @@
 
-# Extended Documentation
 ### PHP Location Plesk Server
 ```bash
 remote server > /opt/plesk/php/7.4/bin/php
@@ -39,7 +38,7 @@ remote server  > bin/console plugin:update PLUGINNAME
 remote server  > bin/console theme:compile
 remote server  > bin/console cache:clear
 ```  
-## How to use EntityRepositories
+### How to use EntityRepositories
 ```php
 $criteria = new Criteria();
 $criteria->addFilter(new EqualsAnyFilter('[DATA]', [<DATA_ARRAY>]));
@@ -50,8 +49,8 @@ $criteria->addAssociation('field.attribute');
 $entity = EntityRepositoryInterface $repository->search($criteria, $this->context);
 ```
 
-## Custom Field in Shopware Plugin
-### Init custom field on plugin install:
+### Custom Field in Shopware Plugin
+#### Init custom field on plugin install:
 ```php
 public function install(InstallContext $installContext): void
 {
@@ -92,7 +91,7 @@ public function install(InstallContext $installContext): void
 	], $installContext->getContext());
 }
 ```
-### Delete custom field on plugin uninstall:
+#### Delete custom field on plugin uninstall:
 ```php
 public function uninstall(UninstallContext $uninstallContext): void
 {
@@ -109,7 +108,7 @@ public function uninstall(UninstallContext $uninstallContext): void
 	');
 }
 ```
-### Fill custom field in plugin:
+#### Fill custom field in plugin:
 ```php
 public function setCustomField(string $param): void  
 {  
@@ -128,7 +127,7 @@ public function setCustomField(string $param): void
 }
 ```
 
-## Page EventSubscription
+### Page EventSubscription
 
 ```php
 public static function getSubscribedEvents(): array  
@@ -139,7 +138,7 @@ public static function getSubscribedEvents(): array
 }
 ```
 
-## VueJS Compile Frontend
+### VueJS Compile Frontend
 ```bash
 compile || /var/www/html/custom/plugins/NetiNextStoreLocator/src/Resources/app/storefront/src/plugins/store-locator
 cd	|| ~/gitrepos/projectsSW6/buefa/src/plugins/NetiNextStoreLocator/src/Resources/app/storefront/src/plugins/store-locator/dist
