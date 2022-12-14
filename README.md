@@ -1,4 +1,5 @@
 
+
 ### PHP Location Plesk Server
 ```bash
 remote server  > /opt/plesk/php/7.4/bin/php
@@ -13,10 +14,10 @@ remote server  > bin/console user:create --admin --email=first@last.com --firstN
 docker machine > bin/console plugin:refresh
 docker machine > bin/console plugin:install PLUGINNAME
 docker machine > bin/console plugin:activate PLUGINNAME
-docker machine > copy changed files to machine
+docker machine > copy changed StorefrontJS files to machine
 docker machine > ./bin/build-storefront.sh
 
-docker machine > copy compiled minified JS to server 
+remote server  > copy compiled minified StorefrontJS to server
 location       > plugindir/src/Resources/app/storefront/dist/storefront/js/full-plugin-name.js
 
 remote server  > bin/console theme:compile
@@ -28,16 +29,36 @@ remote server  > bin/console cache:clear
 docker machine > bin/console plugin:refresh
 docker machine > bin/console plugin:install PLUGINNAME
 docker machine > bin/console plugin:activate PLUGINNAME
-docker machine > copy changed files to machine
+docker machine > copy changed AdministrationJS files to machine
 docker machine > ./bin/build-administration.sh
 
-docker machine > copy compiled minified JS to server
+docker machine > copy compiled minified AdministrationJS to server
 location       > plugindir/src/Resources/public/administration/js/full-plugin-name.js
 
 remote server  > bin/console plugin:update PLUGINNAME
 remote server  > bin/console theme:compile
 remote server  > bin/console cache:clear
-```  
+```
+### Compile Plugin VueJS Components
+```bash
+docker machine > bin/console plugin:refresh
+docker machine > bin/console plugin:install PLUGINNAME
+docker machine > bin/console plugin:activate PLUGINNAME
+docker machine > copy changed VueJS component files to machine
+
+docker machine > npm run build
+location       > plugindir/src/Resources/app/storefront/src/plugins/COMPONENT-NAME
+
+docker machine > ./bin/build-storefront.sh
+
+remote server  > copy compiled minified VueJS to server
+location       > plugindir/src/Resources/app/storefront/src/plugins/COMPONENT-NAME/dist/COMPONENT-NAME.js
+remote server  > copy compiled minified StorefrontJS to server
+location       > plugindir/src/Resources/app/storefront/dist/storefront/js/full-plugin-name.js
+
+remote server  > bin/console theme:compile
+remote server  > bin/console cache:clear
+```
 ### How to use EntityRepositories
 ```php
 $criteria = new Criteria();
@@ -136,15 +157,4 @@ public static function getSubscribedEvents(): array
 		[...Page]LoadedEvent::class => 'on[...]Page'  
 	];  
 }
-```
-
-### Compile VueJS Frontend Components
-```bash
-compile || /var/www/html/custom/plugins/NetiNextStoreLocator/src/Resources/app/storefront/src/plugins/store-locator
-cd	|| ~/gitrepos/projectsSW6/buefa/src/plugins/NetiNextStoreLocator/src/Resources/app/storefront/src/plugins/store-locator/dist
-cp to	|| ~/gitrepos/projectsSW6/buefa_shop/shop/plugins/NetiNextStoreLocator/src/Resources/app/storefront/src/plugins/store-locator/dist
-// VUE Component Minified JS => Compile Files with command (Compile on Local Machine => Deploy file on Server & Project)
-file: store-locator.js
-command: npm run build
-
 ```
