@@ -1,11 +1,11 @@
 
 ### PHP Location Plesk Server
 ```bash
-remote server > /opt/plesk/php/7.4/bin/php
+remote server  > /opt/plesk/php/7.4/bin/php
 ```
 ### User Creation via Shopware CLI
 ```bash
-remote server > bin/console user:create --admin --email=first@last.com --firstName="first" --lastName="last" --password=pwd123 --no-interaction firstlast
+remote server  > bin/console user:create --admin --email=first@last.com --firstName="first" --lastName="last" --password=pwd123 --no-interaction firstlast
 ```
 ### Compile Plugin Storefront and Administration Components
 #### Compile Storefront Javascript
