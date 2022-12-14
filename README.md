@@ -127,7 +127,7 @@ public function setCustomField(string $param): void
 }
 ```
 
-### Page EventSubscription
+### Page Event Subscription
 
 ```php
 public static function getSubscribedEvents(): array  
@@ -138,7 +138,7 @@ public static function getSubscribedEvents(): array
 }
 ```
 
-### VueJS Compile Frontend
+### Compile VueJS Frontend Components
 ```bash
 compile || /var/www/html/custom/plugins/NetiNextStoreLocator/src/Resources/app/storefront/src/plugins/store-locator
 cd	|| ~/gitrepos/projectsSW6/buefa/src/plugins/NetiNextStoreLocator/src/Resources/app/storefront/src/plugins/store-locator/dist
