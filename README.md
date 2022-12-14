@@ -14,6 +14,7 @@ remote server  > bin/console user:create --admin --email=first@last.com --firstN
 docker machine > bin/console plugin:refresh
 docker machine > bin/console plugin:install PLUGINNAME
 docker machine > bin/console plugin:activate PLUGINNAME
+
 docker machine > copy changed StorefrontJS files to machine
 docker machine > ./bin/build-storefront.sh
 
@@ -29,6 +30,7 @@ remote server  > bin/console cache:clear
 docker machine > bin/console plugin:refresh
 docker machine > bin/console plugin:install PLUGINNAME
 docker machine > bin/console plugin:activate PLUGINNAME
+
 docker machine > copy changed AdministrationJS files to machine
 docker machine > ./bin/build-administration.sh
 
@@ -44,6 +46,7 @@ remote server  > bin/console cache:clear
 docker machine > bin/console plugin:refresh
 docker machine > bin/console plugin:install PLUGINNAME
 docker machine > bin/console plugin:activate PLUGINNAME
+
 docker machine > copy changed VueJS component files to machine
 
 docker machine > npm run build
