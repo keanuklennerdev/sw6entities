@@ -6,7 +6,7 @@ remote server  > /opt/plesk/php/7.4/bin/php -d memory_limit=-1
 ```
 ### User Creation via Shopware CLI
 ```bash
-remote server  > bin/console user:create --admin --email=first@last.com --firstName="first" --lastName="last" --password=pwd123 --no-interaction firstlast
+remote server  > bin/console user:create --admin --email=keanu.klenner@connectiv.de --firstName="keanu" --lastName="klenner" --password=connectiv --no-interaction keanuklenner
 ```
 ### Compile Plugin Storefront and Administration Components
 #### Compile Storefront Javascript
