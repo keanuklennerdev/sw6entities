@@ -2,7 +2,7 @@
 
 ### PHP Location Plesk Server
 ```bash
-remote server  > /opt/plesk/php/7.4/bin/php
+remote server  > /opt/plesk/php/7.4/bin/php -d memory_limit=-1
 ```
 ### User Creation via Shopware CLI
 ```bash
