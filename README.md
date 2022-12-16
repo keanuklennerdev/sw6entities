@@ -1,5 +1,6 @@
 
 
+
 ### PHP Location Plesk Server
 ```bash
 remote server  > /opt/plesk/php/7.4/bin/php -d memory_limit=-1
@@ -114,6 +115,22 @@ public function install(InstallContext $installContext): void
 		]
 	], $installContext->getContext());
 }
+```
+#### Custom field particularities
+##### Text editor as custom field [config values are important, HTML type is not enough]
+```php
+'name' => '[prefix_customfield_name]',
+'type' => CustomFieldTypes::HTML,
+'config' => [
+	'label' => [
+		'de-DE' => '[LABEL]',
+		'en-GB' => '[LABEL]'
+	],
+	'type' => 'HTML',
+	'componentName' => 'sw-text-editor',
+	'customFieldType' => 'textEditor',
+	'customFieldPosition' => 1
+]
 ```
 #### Delete custom field on plugin uninstall:
 ```php
