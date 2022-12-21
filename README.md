@@ -177,7 +177,7 @@ public static function getSubscribedEvents(): array
 ```
 
 #### Available Shopware 6 Page Events
+####The Shopware 6 Events can be found in your vendor directory under
 ```bash
-The Shopware 6 Events can be found in your vendor directory under:
 vendor/shopware/storefront/Page/<PAGENAME>LoadedEvent.php
 ```
