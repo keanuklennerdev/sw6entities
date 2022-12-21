@@ -1,6 +1,3 @@
-
-
-
 ### PHP Location Plesk Server
 ```bash
 remote server  > /opt/plesk/php/7.4/bin/php -d memory_limit=-1
@@ -177,4 +174,10 @@ public static function getSubscribedEvents(): array
 		[...Page]LoadedEvent::class => 'on[...]Page'  
 	];  
 }
+```
+
+#### Available Shopware 6 Page Events
+```bash
+The Shopware 6 Events can be found in your vendor directory under:
+vendor/shopware/storefront/Page/<PAGENAME>LoadedEvent.php
 ```
