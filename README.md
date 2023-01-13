@@ -61,16 +61,54 @@ remote server  > bin/console theme:compile
 remote server  > bin/console cache:clear
 ```
 ### How to use EntityRepositories
+#### In Service
 ```php
+// use Shopware\Core\Content\Product\ProductEntity;
+// use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
+
 $criteria = new Criteria();
-$criteria->addFilter(new EqualsAnyFilter('[DATA]', [<DATA_ARRAY>]));
+$criteria->addFilter(new EqualsAnyFilter('id', $id));
 $criteria->addAssociation('field');
 $criteria->addAssociation('field.attribute');
 
-/** @var Entity $entity */
-$entity = EntityRepositoryInterface $repository->search($criteria, $this->context);
-```
+/** @var ProductEntity $product */
+$product = $this->productRepository->search($criteria, $this->context);
 
+$this->productRepository->update([
+	[
+		'id' => $productId,
+		'modifiedField' => $modifiedField
+	]
+], $this->context);
+```
+#### services.xml
+```xml
+<!--Subscriber-->
+<service id="Prefix\PluginName\Subscriber\SubscriberName">
+    <tag name="kernel.event_subscriber"/>
+    <argument type="service" id="Prefix\PluginName\Service\ServiceName"/>
+</service>
+
+<!--Services-->
+<service id="Prefix\PluginName\Service\ServiceName">
+    <argument type="service" id="product.repository"/>
+    <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+</service>
+```
+#### In Subscriber
+```php
+public static function getSubscribedEvents(): array  
+{  
+	return [  
+		ProductEvents::PRODUCT_TRANSLATION_WRITTEN_EVENT  => 'onProductWritten'
+	];  
+}
+
+public function onProductWritten(EntityWrittenEvent $event): void
+{
+	// ...
+}
+```
 ### Custom Field in Shopware Plugin
 #### Init custom field on plugin install:
 ```php
@@ -164,18 +202,6 @@ public function setCustomField(string $param): void
 	], $this->context);  
 }
 ```
-
-### Page Event Subscription
-
-```php
-public static function getSubscribedEvents(): array  
-{  
-	return [  
-		[...Page]LoadedEvent::class => 'on[...]Page'  
-	];  
-}
-```
-
 #### Available Shopware 6 Page Events
 #### The Shopware 6 Events can be found in your vendor directory under
 ```bash
