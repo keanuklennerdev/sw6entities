@@ -6,7 +6,7 @@ remote server  > /opt/plesk/php/7.4/bin/php -d memory_limit=-1
 ```bash
 remote server  > bin/console user:create --admin --email=keanu.klenner@connectiv.de --firstName="keanu" --lastName="klenner" --password=connectiv --no-interaction keanuklenner
 ```
-### Compile Plugin Storefront and Administration Components
+### Compile Storefront and Administration Components
 #### Compile Storefront Javascript
 ```bash
 docker machine > bin/console plugin:refresh
@@ -180,4 +180,13 @@ public static function getSubscribedEvents(): array
 #### The Shopware 6 Events can be found in your vendor directory under
 ```bash
 vendor/shopware/storefront/Page/<PAGENAME>LoadedEvent.php
+```
+### Shop Protection through .htaccess file
+#### Location of the .htaccess and password file
+```bash 
+shopware/public
+```
+####  disable pwd protection
+```bash
+satisfy Any
 ```
