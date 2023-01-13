@@ -97,17 +97,34 @@ $this->productRepository->update([
 ```
 #### In Subscriber
 ```php
+private ServiceName $serviceName;
+
+public function __construct(ServiceName $serviceName)
+{
+	$this->serviceName = $serviceName;
+}
+
 public static function getSubscribedEvents(): array  
 {  
 	return [  
-		ProductEvents::PRODUCT_TRANSLATION_WRITTEN_EVENT  => 'onProductWritten'
+		ProductEvents::PRODUCT_TRANSLATION_WRITTEN_EVENT => 'onProductTranslationWritten',
+		ProductEvents::PRODUCT_TRANSLATION_LOADED_EVENT  => 'onProductTranslationLoaded',
+		// ...
 	];  
 }
 
-public function onProductWritten(EntityWrittenEvent $event): void
+public function onProductTranslationWritten(EntityWrittenEvent $event): void
 {
-	// ...
+	// Call injected custom service on event written
+	$this->serviceName->method($param);
 }
+
+public function onProductTranslationLoaded(EntityLoadedEvent $event): void
+{
+	// Call injected custom service on event loaded
+	$this->serviceName->method($param);
+}
+// ...
 ```
 ### Custom Field in Shopware Plugin
 #### Init custom field on plugin install:
