@@ -124,7 +124,12 @@ public function onProductTranslationLoaded(EntityLoadedEvent $event): void
 	// Call injected custom service on event loaded
 	$this->serviceName->method($param);
 }
-// ...
+
+#### Available Shopware 6 Page Events
+#### The Shopware 6 Events can be found in your vendor directory under
+```bash
+vendor/shopware/storefront/Page/<PAGENAME>LoadedEvent.php
+```
 ```
 ### Custom Field in Shopware Plugin
 #### Init custom field on plugin install:
@@ -218,11 +223,6 @@ public function setCustomField(string $param): void
 		]
 	], $this->context);  
 }
-```
-#### Available Shopware 6 Page Events
-#### The Shopware 6 Events can be found in your vendor directory under
-```bash
-vendor/shopware/storefront/Page/<PAGENAME>LoadedEvent.php
 ```
 ### Shop Protection through .htaccess file
 #### Location of the .htaccess and password file
