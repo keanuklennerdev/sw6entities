@@ -124,11 +124,11 @@ public function onProductTranslationLoaded(EntityLoadedEvent $event): void
 	// Call injected custom service on event loaded
 	$this->serviceName->method($param);
 }
-
+```
 #### Available Shopware 6 Page Events
 #### The Shopware 6 Events can be found in your vendor directory under
 ```bash
-vendor/shopware/storefront/Page/<PAGENAME>LoadedEvent.php
+vendor/shopware/core/Content/ContentName/NameEvent.php
 ```
 ```
 ### Custom Field in Shopware Plugin
