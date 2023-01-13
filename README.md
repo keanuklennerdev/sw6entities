@@ -130,7 +130,6 @@ public function onProductTranslationLoaded(EntityLoadedEvent $event): void
 ```bash
 vendor/shopware/core/Content/ContentName/NameEvent.php
 ```
-```
 ### Custom Field in Shopware Plugin
 #### Init custom field on plugin install:
 ```php
