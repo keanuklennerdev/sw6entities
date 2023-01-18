@@ -232,3 +232,5 @@ shopware/public
 ```bash
 satisfy Any
 ```
+### Information about messagequeues
+The table "dead_message" denies some tasks in the messagequeue to get scheduled. You have to remove the dead message and reset the task manually to scheduled again.
