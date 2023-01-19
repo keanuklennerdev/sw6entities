@@ -1,3 +1,4 @@
+
 ### PHP Location Plesk Server
 ```bash
 remote server  > /opt/plesk/php/7.4/bin/php -d memory_limit=-1
@@ -234,3 +235,58 @@ satisfy Any
 ```
 ### Information about messagequeues
 The table "dead_message" denies some tasks in the messagequeue to get scheduled. You have to remove the dead message and reset the task manually to scheduled again.
+
+### Dockware Setup
+#### Setup tasks
+ 1.  ```mkdir projectname``` on your WSL2 machine to create a base folder
+ 2.  ```cd projectname``` 
+ 3.  ```vim docker-compose.yml``` or ```cp docker-compose.yml```
+ 4. ```git clone``` repository
+ 5. ```docker compose up -d``` to start your container
+ 6. ```docker ps``` to check if your container is up
+ 7. ```docker exec -it container_name bash``` to get access to your container (check if bind mounted)
+#### docker-compose.yml
+```yml
+version: "3"
+
+services:
+
+    shopware:
+        image: dockware/dev:6.4.11.1
+        container_name: SW6_PROJECTABBREVIATION
+        ports:
+            - "22:22"     # ssh
+            - "80:80"     # apache2
+            - "443:443"   # apache2 https
+            - "8888:8888" # watch admin
+            - "9998:9998" # watch storefront proxy
+            - "9999:9999" # watch storefront
+            - "3306:3306" # mysql port
+        networks:
+            - web
+        volumes:
+            - "./git_root/subfolders:/var/www/html/custom/plugins"
+        environment:
+            - PHP_VERSION=8.0      # switch php version
+            # - NODE_VERSION=14      # switch node version [12|14|16]
+            # - COMPOSER_VERSION=2   # switch composer version [1|2]
+            # - TZ=Europe/Berlin     # custom timezone
+            # - SW_CURRENCY=GBP      # currency [standard EURO]
+            # - XDEBUG_ENABLED=1     # disabled because of performance for compiling
+
+networks:
+    web:
+        external: false
+```
+#### Dockware Images
+
+[DEV](https://docs.dockware.io/setup/what-image-should-you-use#dev)
+[CONTRIBUTE](https://docs.dockware.io/setup/what-image-should-you-use#contribute)
+[ESSENTIALS](https://docs.dockware.io/setup/what-image-should-you-use#essentials)
+[FLEX](https://docs.dockware.io/setup/what-image-should-you-use#flex)
+[PLAY](https://docs.dockware.io/setup/what-image-should-you-use#play)
+
+#### Access to local database
+The easiest way to access your local database is, to use the adminer
+[localhost/adminer.php](localhost/adminer.php)
+
