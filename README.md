@@ -240,7 +240,7 @@ The table "dead_message" denies some tasks in the messagequeue to get scheduled.
 #### Setup tasks
  1.  ```mkdir projectname``` on your WSL2 machine to create a base folder
  2.  ```cd projectname``` 
- 3.  ```vim docker-compose.yml``` or ```cp docker-compose.yml```
+ 3.  ```vim docker-compose.yml``` or ```cp docker-compose.yml``` to get your docker compose file
  4. ```git clone``` repository
  5. ```docker compose up -d``` to start your container
  6. ```docker ps``` to check if your container is up
@@ -278,14 +278,7 @@ networks:
     web:
         external: false
 ```
-#### Dockware Images
-
-[DEV](https://docs.dockware.io/setup/what-image-should-you-use#dev)
-[CONTRIBUTE](https://docs.dockware.io/setup/what-image-should-you-use#contribute)
-[ESSENTIALS](https://docs.dockware.io/setup/what-image-should-you-use#essentials)
-[FLEX](https://docs.dockware.io/setup/what-image-should-you-use#flex)
-[PLAY](https://docs.dockware.io/setup/what-image-should-you-use#play)
-
+#### [Dockware Images](https://docs.dockware.io/setup/what-image-should-you-use)
 #### Access to local database
 The easiest way to access your local database is, to use the adminer
 [localhost/adminer.php](localhost/adminer.php)
