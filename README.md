@@ -281,5 +281,5 @@ networks:
 #### [Dockware Images](https://docs.dockware.io/setup/what-image-should-you-use)
 #### Access to local database
 The easiest way to access your local database is, to use the adminer
-[localhost/adminer.php](https://localhost/adminer.php)
+[localhost/adminer.php](http://localhost/adminer.php)
 
