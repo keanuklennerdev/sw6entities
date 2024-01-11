@@ -13,7 +13,7 @@ $criteria->addAssociation('field.attribute');
 $product = $this->productRepository->search($criteria, $this->context);
 
 $this->productRepository->update([
-	[
+    [
 		'id' => $productId,
 		'modifiedField' => $modifiedField
 	]
@@ -29,8 +29,8 @@ $this->productRepository->update([
 
 <!--Services-->
 <service id="Prefix\PluginName\Service\ServiceName">
-    <argument type="service" id="product.repository"/>
-    <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+	<argument type="service" id="product.repository"/>
+	<argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
 </service>
 ```
 ### Custom Field in Shopware Plugin
