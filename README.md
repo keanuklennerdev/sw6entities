@@ -13,7 +13,7 @@ $criteria->addAssociation('field.attribute');
 $product = $this->productRepository->search($criteria, $this->context);
 
 $this->productRepository->update([
-    [
+	[
 		'id' => $productId,
 		'modifiedField' => $modifiedField
 	]
@@ -96,12 +96,12 @@ public function install(InstallContext $installContext): void
 public function uninstall(UninstallContext $uninstallContext): void
 {
 	$connection = $this->container->get(Connection::class);
-
+	
 	$connection->executeUpdate('
 		DELETE FROM `custom_field_set`
 		WHERE name LIKE \'[prefix_custom_field_set]\'
 	');
-
+	
 	$connection->executeUpdate('
 		DELETE FROM `custom_field`
 		WHERE name LIKE \'[prefix_customfield_name]\'
@@ -114,10 +114,10 @@ public function setCustomField(string $param): void
 {  
 	$criteria = new Criteria();  
 	$criteria->addFilter(new EqualsAnyFilter('[IDENTIFIER]', [$param]));  
-  
+	
 	/** @var Entity $entity */  
 	$entity = $this->repository->search($criteria, $this->context)->first();  
-  
+	
 	$this->repository->update([  
 		[  
 			'id' => $entity->getId(),  
